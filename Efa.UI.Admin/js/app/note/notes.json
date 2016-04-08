@@ -1,0 +1,34 @@
+{
+  "notes":[
+    {
+      "content": "AngularJS - HTML enhanced for web apps!",
+      "color": "warning",
+      "date": 1410788931159
+    },
+    {
+      "content": "Meeting",
+      "color": "primary",
+      "date": 1410788631159
+    },
+    {
+        "content": "Keep watching",
+        "color": "success",
+        "date": 1410788731159
+    },
+    {
+        "content": "Tasks",
+        "color": "info",
+        "date": 1410788731159
+    },
+    {
+        "content": "Jefferson Shibuya",
+        "color": "success",
+        "date": 1410788731159
+    },
+    {
+        "content": "Anderson",
+        "color": "success",
+        "date": 1410788731159
+    }
+  ]
+}

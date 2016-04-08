@@ -1,0 +1,96 @@
+﻿<div class="bg-light lter b-b wrapper-md">
+    <h1 class="m-n font-thin h3">Bem Vindo</h1>
+</div>
+<div ng-show="loading"><cube-grid-spinner></cube-grid-spinner></div>
+<div ng-hide="loading">
+    <div class="wrapper-md">
+        <div class="row" ng-if="vm.dash != undefined">
+            <div class="col-md-12">
+                <div class="row row-sm text-center">
+                    <div class="col-xs-3">
+                        <a ui-sref="app.alunos" class="block panel padder-v bg-white item">
+                            <div class="h1 text-info font-thin h1">{{vm.dash.TotalAlunos}}</div>
+                            <span class="text-muted text-xs">Alunos</span>
+                            <div class="bottom text-right w-full">
+                                <i class="glyphicon glyphicon-user text-muted m-r-sm"></i>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="col-xs-3">
+                        <a ui-sref="app.professores" class="block panel padder-v bg-primary item">
+                            <span class="text-white font-thin h1 block">{{vm.dash.TotalProfessores}}</span>
+                            <span class="text-muted text-xs">Professores</span>
+                            <span class="bottom text-right w-full">
+                                <i class="fa fa-graduation-cap text-muted m-r-sm"></i>
+                            </span>
+                        </a>
+                    </div>
+                    <div class="col-xs-3">
+                        <a ui-sref="app.turmas" class="block panel padder-v bg-info item">
+                            <span class="text-white font-thin h1 block">{{vm.dash.TotalTurmas}}</span>
+                            <span class="text-muted text-xs">Turmas</span>
+                            <span class="bottom text-right w-full">
+                                <i class="fa fa-users text-muted m-l-sm"></i>
+                            </span>
+                        </a>
+                    </div>
+                    <div class="col-xs-3">
+                        <a ui-sref="apps.contatos" class="block panel padder-v item">
+                            <div class="font-thin h1">{{vm.dash.TotalContatos}}</div>
+                            <span class="text-muted text-xs">Contatos</span>
+                            <div class="bottom text-right w-full">
+                                <i class="fa fa-phone text-muted m-l-sm"></i>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- / stats -->
+        <!-- tasks -->
+        <div ng-hide="todos.length == 0">
+            <div class="panel wrapper">
+                <div class="row">
+                    <div class="col-md-8 b-r b-light no-border-xs">
+                        <a ui-sref="app.todo" class="text-muted pull-right text-lg"><i class="icon-arrow-right"></i></a>
+                        <h4 class="font-thin m-t-none m-b-md text-muted">Últimas Tarefas</h4>
+                        <div class=" m-b" ng-repeat="todo in todosRemain | orderBy: 'date':true | limitTo:4">
+                            <div class="m-b">
+                                <span class="label text-base bg-info pos-rlt m-r"><i class="arrow right arrow-info"></i>{{todo.date | date: "dd/MM/yy HH:mm"}}</span>
+                                <span>{{todo.title}}</span>
+                            </div>
+                        </div>
+                        <div class="panel-footer">
+                            <ul class="nav nav-xs nav-pills m-t m-b">
+                                <li ui-sref-active="active">
+                                    <a ui-sref="app.todo.list({fold:''})">Total: <span class="badge bg-info m-t-xs"> {{todos.length}}</span> </a>
+                                </li>
+                                <li ui-sref-active="active">
+                                    <a ui-sref="app.todo.list({fold:'active'})">Ativas: <span class="badge bg-danger m-t-xs"> {{todosRemain.length}}</span></a>
+                                </li>
+                                <li ui-sref-active="active">
+                                    <a ui-sref="app.todo.list({fold:'completed'})">Finalizadas: <span class="badge bg-success m-t-xs"> {{todosDone.length}}</span></a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="row row-sm">
+                            <div class="text-center">
+                                <div ui-jq="sparkline" ui-options="[ {{percentDone | number:0}}, {{percentRemain | number:0}}], {type:'pie', height:154, sliceColors:['{{app.color.success}}','{{app.color.danger}}']}" class="sparkline inline"></div>
+                                <div class="line pull-in"></div>
+                                <div class="text-xs">
+                                    <i class="fa fa-circle text-success"></i> {{percentDone | number:0}}%  Finalizadas
+                                    <i class="fa fa-circle text-danger m-l"></i> {{percentRemain | number: 0}}% Ativas
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- / tasks -->
+
+
+        </div>
+    </div>
+</div>

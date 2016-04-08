@@ -1,0 +1,31 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<bundle xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://vswebessentials.com/schemas/v1/bundle.xsd">
+  <settings>
+    <!--Determines if the bundle file should be automatically optimized after creation/update.-->
+    <minify>true</minify>
+    <!--Determin whether to generate/re-generate this bundle on building the solution.-->
+    <runOnBuild>true</runOnBuild>
+    <!--Specifies a custom subfolder to save files to. By default, compiled output will be placed in the same folder and nested under the original file.-->
+    <outputDirectory />
+  </settings>
+  <!--The order of the <file> elements determines the order of the files in the bundle.-->
+  <files>
+    <file>/vendor/angular/angular-animate/angular-animate.js</file>
+    <file>/vendor/angular/angular-cookies/angular-cookies.js</file>
+    <file>/vendor/angular/angular-resource/angular-resource.js</file>
+    <file>/vendor/angular/angular-sanitize/angular-sanitize.js</file>
+    <file>/vendor/angular/angular-touch/angular-touch.js</file>
+    <file>/vendor/angular/angular-route/angular-route.min.js</file>
+    <file>/vendor/angular/angular-ui-router/angular-ui-router.js</file>
+    <file>/vendor/angular/angular-ngtable/ng-table.min.js</file>
+    <file>/vendor/angular/ngstorage/ngStorage.js</file>
+    <file>/vendor/angular/spinkit/angular-spinkit.js</file>
+    <file>/vendor/angular/ladda/spin.min.js</file>
+    <file>/vendor/angular/ladda/ladda.min.js</file>
+    <file>/vendor/angular/ladda/angular-ladda.js</file>
+    <file>/vendor/modules/toastr/toastr.min.js</file>
+    <file>/vendor/angular/angular-bootstrap/ui-bootstrap-tpls.min.js</file>
+    <file>/vendor/angular/oclazyload/ocLazyLoad.js</file>
+    <file>/vendor/angular/angular-locale/angular-locale_pt-br.js</file>    
+  </files>
+</bundle>

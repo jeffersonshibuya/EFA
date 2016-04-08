@@ -1,0 +1,72 @@
+﻿<div ng-show="loading"><cube-grid-spinner></cube-grid-spinner></div>
+<div ng-hide="loading">
+    <div class="bg-light lter b-b wrapper-md">
+        <h1 class="m-n font-thin h3">Professores</h1>
+    </div>
+    <div class="wrapper-md">
+        <button type="button" ladda="loadingCreate" data-style="zoom-in" class="btn btn-info btn-addon" ng-click="vm.open('lg')"><i class="fa fa-plus"></i> Novo Professor </button>
+        <br /><br />
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                Lista dos Professores
+            </div>
+            <div class="row wrapper">
+                <div class="col-md-4">
+                    <div class="input-group">
+                        <span class="input-group-addon"><i class="glyphicon glyphicon-search icon text-success-dk"></i></span>
+                        <input type="text" id="filter" class="input-sm form-control" placeholder="Pesquisar...">
+                    </div>
+                </div>
+            </div>
+            <div>
+                <table class="table m-b-none" ui-jq="footable" data-filter="#filter" data-page-size="20">
+                    <thead>
+                        <tr>
+                            <th data-toggle="true">
+                                Nome
+                            </th>
+                            <th data-hide="phone">
+                                Email
+                            </th>
+                            <th data-hide="phone, tablet">
+                                CPF
+                            </th>
+                            <th data-hide="phone">
+                                Telefone
+                            </th>
+                            <th>
+                                Celular
+                            </th>
+                            <th data-sort-ignore="true"></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr data-ng-repeat="professor in vm.professores | orderBy:'Nome'">
+                            <td>{{professor.Nome}}</td>
+                            <td>{{professor.Email}}</td>
+                            <td>{{professor.CPF}}</td>
+                            <td>{{professor.Telefone}} </td>
+                            <td> {{professor.Celular}}</td>
+                            <td>
+                                <button data-ng-click="vm.delete(professor)" class="btn btn-rounded btn-sm btn-icon btn-danger" tooltip="Excluir">
+                                    <i class="fa fa-trash"></i>
+                                </button>
+                                <button ng-click="vm.openEdit('lg', professor)" class="btn btn-rounded btn-sm btn-icon btn-info" tooltip="Editar">
+                                    <i class="fa fa-edit"></i>
+                                </button>
+                            </td>
+
+                        </tr>
+                    </tbody>
+                    <tfoot class="hide-if-no-paging">
+                        <tr>
+                            <td colspan="5" class="text-center">
+                                <ul class="pagination"></ul>
+                            </td>
+                        </tr>
+                    </tfoot>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>

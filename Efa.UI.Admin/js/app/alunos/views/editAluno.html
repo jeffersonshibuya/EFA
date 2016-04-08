@@ -1,0 +1,64 @@
+﻿<div class="wrapper-md">
+    <div>
+        <div class="row">
+            <div class="col-md-12">
+                <form name="frmAluno" class="form-validation" novalidate ng-submit="frmAluno.$valid && vm.save(aluno)">
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <span class="h4">{{vm.title}} - {{aluno.Nome}} </span>
+                        </div>
+                        <br />
+
+                        <ul>
+                            <li ng-repeat="error in vm.errors" class="text-danger">{{error}}</li>
+                        </ul>
+                        <div class="panel-body">
+                            <div class="form-group pull-in clearfix">
+                                <div class="col-sm-6" ng-class="{true: 'has-error'}[submitted && frmAluno.nome.$invalid]">
+                                    <label>Nome</label>
+                                    <input type="text" class="form-control" name="nome" placeholder="Name" data-ng-model="aluno.Nome" required>
+                                    <span class="text-danger" ng-show="submitted && frmAluno.nome.$invalid">
+                                        Informe o nome
+                                    </span>
+                                </div>
+                                <div class="col-sm-6">
+                                    <label>Turma</label>
+                                    <div class="input-group">
+                                        <ui-select data-ng-model="vm.turma.selected" theme="bootstrap">
+                                            <ui-select-match placeholder="Selecione uma turma...">{{$select.selected.Livro}} | {{$select.selected.HorarioInicio}} - {{$select.selected.HorarioFim}}</ui-select-match>
+                                            <ui-select-choices repeat="turma in vm.turma | filter: $select.search">
+                                                <div ng-bind-html="turma.Livro + ' - ' + turma.HorarioInicio + ' - ' + turma.HorarioFim  + ' [' + turma.Professor.Nome +']' | highlight: $select.search"></div>
+                                                <small ng-bind-html="turma.Dias | highlight: $select.search"></small>
+                                            </ui-select-choices>
+                                        </ui-select>    
+                                        <span class="input-group-btn">
+                                            <button type="button" data-ng-click="vm.turma.selected = undefined" class="btn btn-default">
+                                                <span class="glyphicon glyphicon-trash"></span>
+                                            </button>
+                                        </span>
+                                    </div>                 
+                                                                    
+                                </div>
+                            </div>
+                            <div class="form-group pull-in clearfix">
+                                <div class="col-sm-6">
+                                    <label>Telefone</label>
+                                    <input type="text" class="form-control" ui-mask data-mask="9999-9999" placeholder="Telefone" ng-model="aluno.Telefone">
+                                </div>
+                                <div class="col-sm-6">
+                                    <label>Celular</label>
+                                    <input type="text" class="form-control" ui-mask data-mask="9999-9999" placeholder="Celular" ng-model="aluno.Celular">
+                                </div>
+                            </div>
+                        </div>
+                        <footer class="panel-footer text-right bg-light lter">
+                            <button ui-sref="app.alunos" class="btn btn-warning btn-addon" data-ng-click="vm.cancel()"><i class="fa fa-close"></i>Fechar</button>
+                            <button data-ng-click="submitted=true" class="btn btn-success btn-addon"><i class="fa fa-check"></i>Salvar</button>
+                        </footer>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+

@@ -1,0 +1,219 @@
+﻿<div class="bg-light lter b-b wrapper-md">
+    <div class="row">
+        <div class="col-sm-6 col-xs-12">
+            <h1 class="m-n font-thin h3 text-black">Notas - Gráfico</h1>
+            <small class="text-muted">Aluno: {{vm.aluno.Nome}}</small>
+        </div>
+        <div class="col-sm-6 text-right hidden-xs">
+            <button ng-disabled="vm.cadastro" data-ng-click="$back()" class="btn btn-lg btn-rounded btn-icon btn-default" popover="Voltar" popover-placement="left" popover-trigger="mouseenter">
+                <i class="fa fa-mail-reply"></i>
+            </button>
+        </div>
+    </div>
+</div>
+
+<div class="wrapper-md">
+    <div>
+        <div class="row">
+            <div class="col-lg-4">
+                <div class="panel panel-default">
+                    <div class="panel-heading font-bold">
+                        Média Geral
+                    </div>
+                    <div class="panel-body text-center">
+                        <h4>Média Geral - {{vm.aluno.Notas.MediaGeral}}</h4>
+                        <div class="inline">
+                            <div ui-jq="easyPieChart" ui-options="{
+                      percent: {{vm.aluno.Notas.MediaGeral}},
+                      lineWidth: 10,
+                      trackColor: '{{app.color.light}}',
+                      barColor: '{{app.color.success}}',
+                      scaleColor: '{{app.color.light}}',
+                      size: 188,
+                      lineCap: 'butt',
+                      animate: 1000
+                    }">
+                                <div>
+                                    <span class="h2 m-l-sm step">{{vm.aluno.Notas.MediaGeral}}</span>%
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="panel-footer"><small>Média mínima para aprovação: 70</small></div>
+                </div>
+            </div>
+            <div class="col-lg-8">
+                <div class="panel panel-default">
+                    <div class="panel-heading font-bold">Quiz Test</div>
+                    <div class="panel-body">
+                        <div class="row m-b">
+                            <div class="col-xs-6">
+                                <div ui-jq="plot" ui-options="
+              [
+                { data: {{quiz}}, label: 'Quiz', bars: { show: true, barWidth: 0.6, align: 'center' } }
+              ],
+              {
+                colors: ['{{app.color.warning}}' ],
+                series: { shadowSize: 2 },
+                xaxis:{ font: { color: '#ccc' }, ticks: [[1,'Quiz 1'],[2,'Quiz 2'],[3,'Quiz 3'],[4,'Quiz 4'],[5,'Quiz 5'],[6,'Quiz 6'],[7,'Quiz 7'],[8,'Quiz 8']] },
+                yaxis:{ font: { color: '#ccc' }, min: 0, max: {{totalQuiz}} },
+                grid: { hoverable: true, clickable: true, borderWidth: 0, color: '#ccc' },
+                tooltip: true,
+                tooltipOpts: { content: '%x - %y',  defaultTheme: false, shifts: { x: 0, y: {{totalQuiz}} } }
+              }
+            " style="height:235px"></div>
+                            </div>
+                            <div class="col-xs-6">
+                                <div class="panel-body text-center">
+                                    <h4>Média Quiz - {{vm.aluno.Notas.MediaQuiz}}</h4>
+                                    <div class="inline">
+                                        <div ui-jq="easyPieChart" ui-options="{
+                                              percent: {{vm.aluno.Notas.MediaQuiz}},
+                                              lineWidth: 10,
+                                              trackColor: '{{app.color.light}}',
+                                              barColor: '{{app.color.warning}}',
+                                              scaleColor: '{{app.color.light}}',
+                                              size: 188,
+                                              lineCap: 'butt',
+                                              animate: 1000
+                                            }">
+                                            <div>
+                                                <span class="h2 m-l-sm step">{{vm.aluno.Notas.MediaQuiz}}</span>%
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-6">
+                <div class="panel panel-default">
+                    <div class="panel-heading font-bold">Oral Test</div>
+                    <div class="panel-body">
+                        <div class="row m-b">
+                            <div class="col-xs-6">
+                                <div ui-jq="plot" ui-options="
+              [
+                { data: {{oral}}, label: 'Oral Test', bars: { show: true, barWidth: 0.3, align: 'center' } }
+              ],
+              {
+                colors: ['{{app.color.info}}' ],
+                series: { shadowSize: 2 },
+                xaxis:{ font: { color: '#ccc' }, ticks: [[1,'Oral Test 1'],[2,'Oral Test 2']], max: 3 },
+                yaxis:{ font: { color: '#ccc' }, min: 0, max: 50 },
+                grid: { hoverable: true, clickable: true, borderWidth: 0, color: '#ccc' },
+                tooltip: true,
+                tooltipOpts: { content: '%x - %y',  defaultTheme: false, shifts: { x: 0, y: 10 } }
+              }
+            " style="height:240px"></div>
+                            </div>
+                            <div class="col-xs-6">
+                                <div class="panel-body text-center">
+                                    <h4>Média Oral Test - {{vm.aluno.Notas.MediaOralTest}}</h4>
+                                    <div class="inline">
+                                        <div ui-jq="easyPieChart" ui-options="{
+                                              percent: {{vm.aluno.Notas.MediaOralTest}},
+                                              lineWidth: 10,
+                                              trackColor: '{{app.color.light}}',
+                                              barColor: '{{app.color.info}}',
+                                              scaleColor: '{{app.color.light}}',
+                                              size: 188,
+                                              lineCap: 'butt',
+                                              animate: 1000
+                                            }">
+                                            <div>
+                                                <span class="h2 m-l-sm step">{{vm.aluno.Notas.MediaOralTest}}</span>%
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-6">
+                <div class="panel panel-default">
+                    <div class="panel-heading font-bold">Written Test</div>
+                    <div class="panel-body">
+                        <div class="row m-b">
+                            <div class="col-xs-6">
+                                <div ui-jq="plot" ui-options="
+              [
+                { data: {{written}}, label: 'Written Test', bars: { show: true, barWidth: 0.3, align: 'center' } }
+              ],
+              {
+                colors: ['{{app.color.primary}}' ],
+                series: { shadowSize: 2 },
+                xaxis:{ font: { color: '#ccc' }, ticks: {{writtenTicks}}, max: {{max}} },
+                yaxis:{ font: { color: '#ccc' }, min: 0, max: {{totalWritten}} },
+                grid: { hoverable: true, clickable: true, borderWidth: 0, color: '#ccc' },
+                tooltip: true,
+                tooltipOpts: { content: '%x - %y',  defaultTheme: false, shifts: { x: 0, y: {{totalWritten}} } }
+              }
+            " style="height:240px"></div>
+                            </div>
+                            <div class="col-xs-6">
+                                <div class="panel-body text-center">
+                                    <h4>Média Written Test - {{vm.aluno.Notas.MediaWrittenTest}}</h4>
+                                    <div class="inline">
+                                        <div ui-jq="easyPieChart" ui-options="{
+                                              percent: {{vm.aluno.Notas.MediaWrittenTest}},
+                                              lineWidth: 10,
+                                              trackColor: '{{app.color.light}}',
+                                              barColor: '{{app.color.primary}}',
+                                              scaleColor: '{{app.color.light}}',
+                                              size: 188,
+                                              lineCap: 'butt',
+                                              animate: 1000
+                                            }">
+                                            <div>
+                                                <span class="h2 m-l-sm step">{{vm.aluno.Notas.MediaWrittenTest}}</span>%
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+
+            <div class="col-md-12">
+                <div class="panel panel-default">
+                    <div class="panel-heading font-bold">Avaliação do Professor</div>
+                    <div class="panel-body">
+                        <div ui-jq="plot" ui-options="
+              [
+                { data: {{avaliacaoProfessor}}, points: { show: true, radius: 6}, splines: { show: true, tension: 0.45, lineWidth: 5, fill: 0 } }
+              ],
+              {
+                colors: ['{{app.color.info}}'],
+                series: { shadowSize: 3 },
+                xaxis:{
+                  font: { color: '#ccc' },
+                  position: 'bottom',
+                  ticks: [
+                    [ 1, 'Realização de Tarefas' ], [ 2, 'Comportamento e Disciplina' ], [ 3, 'Desenvolvimento' ], [ 4, 'Responsabilidade e Interesse' ], [ 5, 'Conpreensão' ], [ 6, 'Assiduidade' ], [ 7, 'Gramática' ], [ 8, 'Vocabulário' ]
+                  ]
+                },
+                yaxis:{ font: { color: '#ccc' }, min: 0, max: 100 },
+                grid: { hoverable: true, clickable: true, borderWidth: 0, color: '#ccc' },
+                tooltip: true,
+                tooltipOpts: { content: '%x - %y %',  defaultTheme: false, shifts: { x: 0, y: 20 } }
+              }
+            " style="height:240px">
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>

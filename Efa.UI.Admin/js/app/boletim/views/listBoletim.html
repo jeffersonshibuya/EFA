@@ -1,0 +1,131 @@
+﻿<div class="bg-light lter b-b wrapper-md hidden-print">
+    <button class="btn btn-sm btn-warning pull-right btn-addon" ng-click="$back()"><i class="fa fa-mail-reply"></i>Voltar</button>
+    <button class="btn btn-sm btn-info pull-right btn-addon" onclick="window.print();"><i class="fa fa-print"></i>Print</button>
+    
+    <h1 class="m-n font-thin h3">Boletim</h1>
+</div>
+
+<style>
+    @page{margin: 0 auto;}
+
+    @media print {
+        .body {
+            margin: 0;
+            padding: 0;
+        }
+
+        .app-footer {
+            display: none !important;
+        }
+
+        h2 {            
+            display: block; 
+            page-break-before: always;
+            padding-bottom: 60px;
+        }
+    }
+
+    .print {
+        width: 650px;
+        margin: 0 auto;
+    }
+    .print table {
+        width: 644px;
+        margin: 0 auto; 
+        border-collapse: collapse;
+    }
+
+    .print table td {        
+        padding: 7px;
+        border: 1px solid lightgray;
+    }
+
+    .print table tr {
+        padding-top: 5px;
+        padding-bottom: 5px;
+    }
+
+    .print .center {
+        text-align: center;
+    }
+
+    .boletim {
+        border: 1px solid black;
+        margin-bottom: 15px;
+        min-height: 310px;
+    }
+
+    .header{
+        color: gray;
+        text-align: left;
+    }
+
+    
+</style>
+
+<div>
+    <div class ="print">
+        <div ng-repeat="aluno in vm.alunos | orderBy : 'Nome'">
+            <div class="boletim">
+                <div style="float: left; width: 140px; margin-left: 15px; margin-top: 3px;">
+                    <img src="/Content/images/efa.jpg" width="120" height="120" />
+                </div>
+                <div style="float: left; margin-left: 80px;">
+                    <h3>Report Card</h3>
+                    <b>Student`s Name: {{aluno.Nome}}</b>
+                    <br />
+                    <br />
+                    <b>Book: {{aluno.Turma.Livro}} </b>
+                </div>
+                <div style="clear: both"></div>
+                <br />
+                <table>
+                    <thead>
+                        <tr class="header">
+                            <th colspan="2">Teacher: {{aluno.Turma.Professor.Nome}}</th>
+                            <th colspan="4">
+                                Time:
+                                {{aluno.Turma.Dias}}
+                            </th>
+                        </tr>
+                    </thead>
+                    <tr>
+                        <td>Quizzes</td>
+                        <td class="center">{{aluno.Notas.MediaQuiz}}</td>
+                        <td>Realização de Tarefas</td>
+                        <td class="center">{{aluno.Notas.RealizacaoTarefas}} %</td>
+                        <td>Compreensão</td>
+                        <td class="center">{{aluno.Notas.Compreensao}} %</td>
+                    </tr>
+                    <tr>
+                        <td>Written Test</td>
+                        <td class="center">{{aluno.Notas.MediaWrittenTest}}</td>
+                        <td>Comportamento e Disciplina</td>
+                        <td class="center">{{aluno.Notas.ComportamentoDisciplina}} %</td>
+                        <td>Assiduidade</td>
+                        <td class="center">{{aluno.Notas.Assiduidade}} %</td>
+                    </tr>
+                    <tr>
+                        <td>Oral Test</td>
+                        <td class="center">{{aluno.Notas.MediaOralTest}}</td>
+                        <td>Desenvolvimento</td>
+                        <td class="center">{{aluno.Notas.Desenvolvimento}} %</td>
+                        <td>Gramática</td>
+                        <td class="center">{{aluno.Notas.Gramatica}} %</td>
+                    </tr>
+                    <tr>
+                        <td>Média Geral</td>
+                        <td class="center">{{aluno.Notas.MediaGeral}}</td>
+                        <td>Responsabilidade e Interesse</td>
+                        <td class="center">{{aluno.Notas.ResponsabilidadeInteresse}} %</td>
+                        <td>Vocabulário</td>
+                        <td class="center">{{aluno.Notas.Vocabulario}} %</td>
+                    </tr>                    
+                </table>
+                
+            </div>   
+            <div ng-if="($index+1)%3==0"> <h2></h2> </div>
+        </div>
+        
+    </div>
+</div>

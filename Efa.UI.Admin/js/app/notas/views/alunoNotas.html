@@ -1,0 +1,303 @@
+﻿<div class="bg-light lter b-b wrapper-md">
+    <div class="row">
+        <div class="col-sm-6 col-xs-12">
+            <h1 class="m-n font-thin h3 text-black">Notas</h1>
+            <small class="text-muted">Aluno: {{vm.aluno.Nome}}</small>
+        </div>
+        <div class="col-sm-6 text-right hidden-xs">
+            <button ng-disabled="vm.cadastro" data-ng-click="vm.delete(vm.notas)" class="btn btn-lg btn-rounded btn-icon btn-danger">
+                <i class="fa fa-trash-o"></i>
+            </button>
+        </div>
+    </div>
+</div>
+<input ng-hide="true" type="text" ng-model="vm.notas.AlunoId" ng-init="vm.notas.AlunoId=vm.aluno.AlunoId">
+<input ng-hide="true" type="text" ng-model="vm.notas.NotasId">
+<div class="wrapper-md">
+    <div class="row">
+        <ul>
+            <li ng-repeat="error in vm.errors" class="text-danger">{{error}}</li>
+        </ul>
+        <div class="col-sm-6">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <span class="label pull-right m-t-xs" ng-class="{'bg-danger' : vm.notas.MediaQuiz<=50, 'bg-warning': vm.notas.MediaQuiz>50 && vm.notas.MediaQuiz<70, 'bg-success' : vm.notas.MediaQuiz>=70}">
+                        <span ng-if="vm.aluno.Turma.TipoProva == 'Default'">{{vm.notas.MediaQuiz = (vm.notas.Quiz1 + vm.notas.Quiz2 + vm.notas.Quiz3 + vm.notas.Quiz4 + vm.notas.Quiz5 + vm.notas.Quiz6 + vm.notas.Quiz7 + vm.notas.Quiz8 )/2 | number:0}}</span>
+                        <span ng-if="vm.aluno.Turma.TipoProva == 'Connection'">{{vm.notas.MediaQuiz = (vm.notas.Quiz1 + vm.notas.Quiz2 + vm.notas.Quiz3 + vm.notas.Quiz4 + vm.notas.Quiz5 + vm.notas.Quiz6 + vm.notas.Quiz7 + vm.notas.Quiz8 )/4 | number:0}}</span>
+                    </span>
+                    Quiz
+                </div>
+                <div>
+                    <table class="table table-striped m-b-none">
+                        <thead>
+                            <tr>
+                                <th data-toggle="true">
+                                    Test
+                                </th>
+                                <th>
+                                    Nota
+                                </th>
+                                <th></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Quiz 1</td>
+                                <td><input type="text" ng-model="vm.notas.Quiz1" size="4" maxlength="2" /> </td>
+                                <td style="width: 45%"><slider ng-model="vm.notas.Quiz1" floor="0" ceiling="{{vm.totalQuiz}}"></slider> </td>
+                            </tr>
+                            <tr>
+                                <td>Quiz 2</td>
+                                <td><input type="text" ng-model="vm.notas.Quiz2" size="4" maxlength="2" /></td>
+                                <td><slider ng-model="vm.notas.Quiz2" floor="0" ceiling="{{vm.totalQuiz}}"></slider> </td>
+                            </tr>
+                            <tr>
+                                <td>Quiz 3</td>
+                                <td><input type="text" ng-model="vm.notas.Quiz3" size="4" maxlength="2" /></td>
+                                <td><slider ng-model="vm.notas.Quiz3" floor="0" ceiling="{{vm.totalQuiz}}"></slider> </td>
+                            </tr>
+                            <tr>
+                                <td>Quiz 4</td>
+                                <td><input type="text" ng-model="vm.notas.Quiz4" size="4" maxlength="2" /></td>
+                                <td><slider ng-model="vm.notas.Quiz4" floor="0" ceiling="{{vm.totalQuiz}}"></slider> </td>
+                            </tr>
+                            <tr>
+                                <td>Quiz 5</td>
+                                <td><input type="text" ng-model="vm.notas.Quiz5" size="4" maxlength="2" /></td>
+                                <td><slider ng-model="vm.notas.Quiz5" floor="0" ceiling="{{vm.totalQuiz}}"></slider> </td>
+                            </tr>
+                            <tr>
+                                <td>Quiz 6</td>
+                                <td><input type="text" ng-model="vm.notas.Quiz6" size="4" maxlength="2" /></td>
+                                <td><slider ng-model="vm.notas.Quiz6" floor="0" ceiling="{{vm.totalQuiz}}"></slider> </td>
+                            </tr>
+                            <tr>
+                                <td>Quiz 7</td>
+                                <td><input type="text" ng-model="vm.notas.Quiz7" size="4" maxlength="2" /></td>
+                                <td><slider ng-model="vm.notas.Quiz7" floor="0" ceiling="{{vm.totalQuiz}}"></slider> </td>
+                            </tr>
+                            <tr>
+                                <td>Quiz 8</td>
+                                <td><input type="text" ng-model="vm.notas.Quiz8" size="4" maxlength="2" /></td>
+                                <td><slider ng-model="vm.notas.Quiz8" floor="0" ceiling="{{vm.totalQuiz}}"></slider> </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-6">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <span class="label pull-right m-t-xs" ng-class="{'bg-danger' : vm.notas.MediaWrittenTest<=50, 'bg-warning': vm.notas.MediaWrittenTest>50 && vm.notas.MediaWrittenTest<70, 'bg-success' : vm.notas.MediaWrittenTest>=70}">
+                        <span ng-if="vm.aluno.Turma.TipoProva == 'Default'"> {{vm.notas.MediaWrittenTest = vm.notas.WrittenTest1 + vm.notas.WrittenTest2 | number:0}} </span>
+                        <span ng-if="vm.aluno.Turma.TipoProva == 'Connection'"> {{vm.notas.MediaWrittenTest = (vm.notas.WrittenTest1 + vm.notas.WrittenTest2 + vm.notas.WrittenTest3 + vm.notas.WrittenTest4) / 4 | number:0}} </span>
+                    </span>
+                    Written Test
+                </div>
+
+                <div>
+                    <table class="table table-striped m-b-none">
+                        <thead>
+                            <tr>
+                                <th data-toggle="true">
+                                    Test
+                                </th>
+                                <th>
+                                    Nota
+                                </th>
+                                <th></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td ng-if="vm.aluno.Turma.TipoProva == 'Default'">Written Test 1</td>
+                                <td ng-if="vm.aluno.Turma.TipoProva == 'Connection'">Capítulos 1 e 2</td>
+                                <td> <input type="text" ng-model="vm.notas.WrittenTest1" size="4" maxlength="3" /> </td>
+                                <td style="width: 45%"><slider ng-model="vm.notas.WrittenTest1" floor="0" ceiling="{{vm.totalWritten}}"></slider> </td>
+                            </tr>
+                            <tr>
+                                <td ng-if="vm.aluno.Turma.TipoProva == 'Default'">Written Test 2</td>
+                                <td ng-if="vm.aluno.Turma.TipoProva == 'Connection'">Capítulos 3 e 4</td>
+                                <td> <input type="text" ng-model="vm.notas.WrittenTest2" size="4" maxlength="3" /> </td>
+                                <td><slider ng-model="vm.notas.WrittenTest2" floor="0" ceiling="{{vm.totalWritten}}"></slider></td>
+                            </tr>
+                            <tr ng-if="vm.aluno.Turma.TipoProva == 'Connection'">
+                                <td>Capítulos 5 e 6</td>
+                                <td> <input type="text" ng-model="vm.notas.WrittenTest3" size="4" maxlength="3" /> </td>
+                                <td><slider ng-model="vm.notas.WrittenTest3" floor="0" ceiling="{{vm.totalWritten}}"></slider></td>
+                            </tr>
+                            <tr ng-if="vm.aluno.Turma.TipoProva == 'Connection'">
+                                <td>Capítulos 7 e 8</td>
+                                <td> <input type="text" ng-model="vm.notas.WrittenTest4" size="4" maxlength="3" /> </td>
+                                <td><slider ng-model="vm.notas.WrittenTest4" floor="0" ceiling="{{vm.totalWritten}}"></slider></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <span class="label pull-right m-t-xs" ng-class="{'bg-danger' : vm.notas.MediaOralTest<=50, 'bg-warning': vm.notas.MediaOralTest>50 && vm.notas.MediaOralTest<70, 'bg-success' : vm.notas.MediaOralTest>=70}">
+                        {{vm.notas.MediaOralTest = vm.notas.OralTest1 + vm.notas.OralTest2 | number:0 }}
+                    </span>
+                    Oral Test
+                </div>
+
+                <div>
+                    <table class="table table-striped m-b-none">
+                        <thead>
+                            <tr>
+                                <th data-toggle="true">
+                                    Test
+                                </th>
+                                <th>
+                                    Nota
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Oral Test 1</td>
+                                <td><input type="text" ng-model="vm.notas.OralTest1" size="4" maxlength="2" /> </td>
+                                <td style="width: 45%"><slider ng-model="vm.notas.OralTest1" floor="0" ceiling="50"></slider> </td>
+                            </tr>
+                            <tr>
+                                <td>Oral Test 2</td>
+                                <td><input type="text" ng-model="vm.notas.OralTest2" size="4" maxlength="2" /> </td>
+                                <td><slider ng-model="vm.notas.OralTest2" floor="0" ceiling="50"></slider> </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <br />
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <span class="label pull-right m-t-xs" ng-class="{'bg-danger' : vm.notas.MediaGeral<=50, 'bg-warning': vm.notas.MediaGeral>50 && vm.notas.MediaGeral<70, 'bg-success' : vm.notas.MediaGeral>=70}">
+                        {{vm.notas.MediaGeral = (vm.notas.MediaQuiz  + vm.notas.MediaWrittenTest + vm.notas.MediaOralTest)/3 | number:0}}
+                    </span>
+                    Média Geral
+                </div>
+            </div>
+
+
+        </div>
+        <!-- Fim col-sm-6 -->
+
+    </div>
+
+    <hr />
+
+    <div class="row">
+
+        <div class="col-sm-6">
+
+            <div class="panel panel-default">
+
+                <div class="panel-heading">
+                    Avaliação do Professor
+                    <div class="pull-right">
+                        <i ng-init="isCollapsed = false" ng-click="isCollapsed = !isCollapsed" ng-class="{'fa fa-plus-square' : isCollapsed, 'fa fa-minus-square' : !isCollapsed}"></i>
+                    </div>
+                </div>
+
+                <div collapse="isCollapsed">
+                    <table class="table table-striped m-b-none">
+                        <thead>
+                            <tr>
+                                <th data-toggle="true">
+                                    Área
+                                </th>
+                                <th>
+                                    Nota
+                                </th>
+                                <th></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Realização de Tarefas</td>
+                                <td> <input type="text" ng-model="vm.notas.RealizacaoTarefas" size="4" maxlength="3" /> % </td>
+                                <td style="width: 45%"><slider ng-model="vm.notas.RealizacaoTarefas" floor="0" ceiling="100"></slider> </td>
+                            </tr>
+                            <tr>
+                                <td>Comportamento e Disciplina</td>
+                                <td> <input type="text" ng-model="vm.notas.ComportamentoDisciplina" size="4" maxlength="3" /> %</td>
+                                <td><slider ng-model="vm.notas.ComportamentoDisciplina" floor="0" ceiling="100"></slider></td>
+                            </tr>
+                            <tr>
+                                <td>Desenvolvimento</td>
+                                <td> <input type="text" ng-model="vm.notas.Desenvolvimento" size="4" maxlength="3" /> %</td>
+                                <td><slider ng-model="vm.notas.Desenvolvimento" floor="0" ceiling="100"></slider></td>
+                            </tr>
+                            <tr>
+                                <td>Responsabilidade e Interesse</td>
+                                <td> <input type="text" ng-model="vm.notas.ResponsabilidadeInteresse" size="4" maxlength="3" /> %</td>
+                                <td><slider ng-model="vm.notas.ResponsabilidadeInteresse" floor="0" ceiling="100"></slider></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+            </div>
+        </div>
+
+        <div class="col-sm-6">
+
+            <div class="panel panel-default">
+
+                <div class="panel-heading">
+                    Avaliação do Professor
+                </div>
+
+                <div collapse="isCollapsed">
+                    <table class="table table-striped m-b-none">
+                        <thead>
+                            <tr>
+                                <th data-toggle="true">
+                                    Test
+                                </th>
+                                <th>
+                                    Nota
+                                </th>
+                                <th></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Compreensão</td>
+                                <td> <input type="text" ng-model="vm.notas.Compreensao" size="4" maxlength="3" /> % </td>
+                                <td style="width: 45%"><slider ng-model="vm.notas.Compreensao" floor="0" ceiling="100"></slider> </td>
+                            </tr>
+                            <tr>
+                                <td>Assiduidade</td>
+                                <td> <input type="text" ng-model="vm.notas.Assiduidade" size="4" maxlength="3" /> %</td>
+                                <td><slider ng-model="vm.notas.Assiduidade" floor="0" ceiling="100"></slider></td>
+                            </tr>
+                            <tr>
+                                <td>Gramática</td>
+                                <td> <input type="text" ng-model="vm.notas.Gramatica" size="4" maxlength="3" /> %</td>
+                                <td><slider ng-model="vm.notas.Gramatica" floor="0" ceiling="100"></slider></td>
+                            </tr>
+                            <tr>
+                                <td>Vocabulário</td>
+                                <td> <input type="text" ng-model="vm.notas.Vocabulario" size="4" maxlength="3" /> %</td>
+                                <td><slider ng-model="vm.notas.Vocabulario" floor="0" ceiling="100"></slider></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+            </div>
+        </div>
+        <!-- Fim col-sm-6 -->
+    </div>
+    <!-- Fim row -->
+
+    <button ng-if="!vm.cadastro" data-ng-click="vm.save(vm.notas)" class="btn btn-success btn-addon"><i class="fa fa-check"></i>Salvar</button>
+    <button ng-if="vm.cadastro" data-ng-click="vm.add(vm.notas)" class="btn btn-success btn-addon "><i class="fa fa-check"></i>Cadastrar</button>
+    <button class="btn btn-warning btn-addon" data-ng-click="$back()"><i class="fa fa-close"></i>Cancelar</button>
+</div>

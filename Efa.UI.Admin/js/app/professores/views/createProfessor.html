@@ -1,0 +1,53 @@
+﻿<div class="wrapper-md">
+    <div>
+        <div class="row">
+            <div class="col-md-12">
+                <form name="frmProfessor" class="form-validation" novalidate ng-submit="frmProfessor.$valid && vm.cadastrar(professor)">
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <span class="h4">Novo Professor [{{professor.Nome}}] </span>
+                        </div>
+                        <br />
+                        <ul>
+                            <li ng-repeat="error in vm.errors" class="text-danger">{{error}}</li>
+                        </ul>
+                        <div class="panel-body">
+                            <div class="form-group pull-in clearfix">
+                                <div class="col-sm-6" ng-class="{true: 'has-error'}[submitted && frmProfessor.nome.$invalid]">
+                                    <label>Nome</label>
+                                    <input type="text" class="form-control" name="nome" placeholder="Name" data-ng-model="professor.Nome" required>
+                                    <span class="text-danger" ng-show="submitted && frmProfessor.nome.$invalid">
+                                        Informe o Nome
+                                    </span>
+                                </div>
+                                <div class="col-sm-6">
+                                    <label>E-mail</label>
+                                    <input type="email" class="form-control" placeholder="E-mail" ng-model="professor.Email">
+                                </div>
+                            </div>
+                            <div class="form-group pull-in clearfix">
+                                <div class="col-sm-4">
+                                    <label>CPF</label>
+                                    <input type="text" class="form-control" ui-mask data-mask="999.999.999-99" placeholder="___.___.___-__" ng-model="professor.CPF">
+                                </div>
+                                <div class="col-sm-4">
+                                    <label>Telefone</label>
+                                    <input type="text" class="form-control" ui-mask data-mask="9999-9999" placeholder="____-____" ng-model="professor.Telefone">
+                                </div>
+                                <div class="col-sm-4">
+                                    <label>Celular</label>
+                                    <input type="text" class="form-control" ui-mask data-mask="9999-9999" placeholder="____-____" ng-model="professor.Celular">
+                                </div>
+                            </div>
+                        </div>
+                        <footer class="panel-footer text-right bg-light lter">                            
+                            <button ui-sref="app.professores" class="btn btn-warning btn-addon" data-ng-click="vm.cancel()"><i class="fa fa-close"></i>Fechar</button>                            
+                            <button data-ng-click="submitted=true" class="btn btn-success btn-addon"><i class="fa fa-check"></i>Cadastrar</button>
+                        </footer>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+

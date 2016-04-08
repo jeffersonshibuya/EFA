@@ -1,0 +1,63 @@
+﻿<div class="wrapper-md">
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            Alunos
+        </div>
+
+        <div class="table m-b-none">
+            <table class="table table-striped b-t b-light">
+                <thead>
+                    <tr>
+                        <th style="width:20px;">
+                            <label class="i-checks m-b-none">
+                                <input type="checkbox"
+                                       ng-model="selectedAll"
+                                       ng-click="checkAll()"> <i></i>
+                            </label>
+                        </th>
+                        <th data-toggle="true">Aluno</th>
+                        <th data-hide="phone">Telefone</th>
+                        <th data-hide="phone">Celular</th>
+                        <th style="width:10px;"></th>
+                        <th style="width:10px;"></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr ng-repeat="aluno in vm.alunosTurma | orderBy:'Nome'">
+                        <td>
+                            <label class="i-checks m-b-none">
+                                <input type="checkbox"
+                                       value="{{aluno}}"
+                                       ng-model="aluno.Selected"
+                                       ng-checked="selection.indexOf(aluno) > -1"
+                                       ng-click="toggleSelection(aluno)"
+                                       ng-disabled="aluno.NotasId == null"> <i></i>
+                            </label>
+
+                        </td>
+                        <td>{{aluno.Nome}}</td>
+                        <td>{{aluno.Telefone}}</td>
+                        <td>{{aluno.Celular}}</td>
+                        <td>
+                            <button ng-click="vm.desvincularAluno(aluno)" class="btn btn-rounded btn-sm btn-icon btn-danger" tooltip="Desvincular">
+                                <i class="fa fa-times"></i>
+                            </button>
+                        </td>
+                        <td>
+                            <button ng-click="vm.alunoNotas(aluno)" ng-class="{'btn-success': aluno.NotasId != null}" class="btn btn-rounded btn-sm btn-icon" tooltip="Notas">
+                                <i class="fa fa-font"></i>
+                            </button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <footer class="panel-footer text-right bg-light lter">
+            <button type="button" class="btn btn-success btn-addon" ng-click="vm.gerarBoletim()"><i class="fa fa-table"></i> Gerar Boletim </button>
+            <button class="btn btn-warning btn-addon" data-ng-click="vm.cancel()"><i class="fa fa-close"></i>Fechar</button>
+        </footer>
+    </div>
+</div>
+
+
+

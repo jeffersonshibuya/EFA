@@ -1,0 +1,87 @@
+﻿<div class="wrapper-md">
+    <div>
+        <div class="row">
+            <div class="col-md-12">
+                <form name="frmTurma" class="form-validation" novalidate">
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <span class="h4">Nova Turma {{vm.title}} </span>
+                        </div>
+                        <br />
+                        <ul>
+                            <li ng-repeat="error in vm.errors" class="text-danger">{{error}}</li>
+                        </ul>
+                        <div class="panel-body">
+                            <div class="form-group pull-in clearfix">
+                                <div class="col-sm-4">
+                                    <label>Livro</label>
+                                    <input type="text" class="form-control" placeholder="Livro" ng-model="turma.Livro">
+                                </div>
+                                <div class="col-sm-4">
+                                    <label>Tipo Prova</label>
+                                    <select ng-model="selectedItem" ng-options="item as item.name for item in items" class="form-control"></select>
+                                </div>
+                                <div class="col-sm-4">
+                                    <label>Professor</label>
+                                    <div class="input-group">
+                                        <select ng-model="turma.ProfessorId"
+                                                ng-options="value.ProfessorId as value.Nome for value in vm.professores" class="form-control">
+                                            <option>--</option>
+                                        </select>
+                                        <span class="input-group-btn">
+                                            <button ng-click="turma.ProfessorId = undefined" class="btn btn-default">
+                                                <span class="glyphicon glyphicon-trash"></span>
+                                            </button>
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="form-group pull-in clearfix">
+                                <div class="col-sm-4">
+                                    <label>Horário</label>
+                                    <div class="form-inline">
+                                        <input ng-model="turma.HorarioInicio" size="10" class="form-control" ui-mask data-mask="99:99" placeholder="Início"> -
+                                        <input ng-model="turma.HorarioFim" size="10" ui-mask class="form-control" data-mask="99:99" placeholder="Fim">
+                                    </div>
+                                </div>
+                                <div class="col-sm-8">
+                                    <label>Dias</label>
+                                    <div isteven-multi-select
+                                         input-model="dias"
+                                         output-model="diasSelect"
+                                         button-label="name"
+                                         helper-elements=""
+                                         item-label="name"
+                                         tick-property="ticked">
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label>Alunos</label>
+                                <div ng-if="vm.alunos.length > 0">
+                                    <ui-select multiple ng-model="alunos.select" theme="bootstrap" ng-disabled="disabled">
+                                        <ui-select-match placeholder="Selecione os alunos...">{{$item.Nome}} </ui-select-match>
+                                        <ui-select-choices group-by="someGroupFn" repeat="aluno in vm.alunos | orderBy:'Nome' | propsFilter: {Nome: $select.search}">
+                                            <div ng-bind-html="aluno.Nome | highlight: $select.search"></div>
+                                        </ui-select-choices>
+                                    </ui-select>
+                                </div>
+                                <div ng-if="vm.alunos.length == 0">
+                                    <label> Não existem alunos disponíveis para vincular. </label>
+                                </div>
+                            </div>
+                        </div>
+
+                        <footer class="panel-footer text-right bg-light lter">
+                            <button class="btn btn-warning btn-addon" data-ng-click="vm.cancel()"><i class="fa fa-close"></i>Fechar</button>
+                            <button data-ng-click="vm.cadastrar(turma)" class="btn btn-success btn-addon"><i class="fa fa-check"></i>Cadastrar</button>
+                        </footer>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+

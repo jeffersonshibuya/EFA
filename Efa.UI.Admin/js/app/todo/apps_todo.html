@@ -1,0 +1,55 @@
+<div class="bg-light lter b-b wrapper-md">
+  <h1 class="m-n font-thin h3">Tarefas</h1>
+</div>
+<div class="wrapper-md" ng-controller="TodoCtrl">
+  <div>
+    <form id="todo-form" ng-submit="addTodo()">
+      <input placeholder="O que precisa ser feito?" ng-model="newTodo" autofocus class="form-control input-lg">
+    </form>
+  </div>
+  <div ng-show="todos.length">
+    <ul class="nav nav-xs nav-pills m-t m-b">
+      <li ui-sref-active="active">
+        <a ui-sref="app.todo.list({fold:''})">Todas</a>
+      </li>
+      <li ui-sref-active="active">
+        <a ui-sref="app.todo.list({fold:'active'})">Ativas</a>
+      </li>
+        <li ui-sref-active="active">
+            <a ui-sref="app.todo.list({fold:'completed'})">Finalizadas</a>
+        </li>
+    </ul>
+    <ul class="list-group">
+      <li ng-repeat="todo in todos | filter:statusFilter track by $index | orderBy: 'date':true" ng-class="{completed: todo.completed, editing: todo == editedTodo}" class="list-group-item">
+        <div class="hover-anchor" ng-dblclick="editTodo(todo)" ng-hide="todo.editedTodo">
+          <a ng-click="removeTodo(todo)" class="text-muted hover-action"><i class="icon-close text-md m-t-xs pull-right"></i></a>
+            <div class="col-xs-8">
+                <label class="i-checks i-checks-sm">
+                    <input type="checkbox" ng-model="todo.completed" ng-change="todoCompleted(todo)"><i></i>
+                </label>
+
+                <span ng-dblclick="editTodo(todo)" tooltip="Duplo clique para editar">{{todo.title}}</span>
+            </div>
+            
+            <span>{{todo.date | date : 'EEE, dd/MM/yyyy  HH:mm'}}</span>
+        </div>
+        <form ng-submit="doneEditing(todo)" ng-show="todo.editedTodo">
+          <input class="form-control" ng-trim="false" ng-model="todo.title" ng-blur="doneEditing(todo)" ui-focus="todo.editedTodo">
+        </form>
+      </li>
+    </ul>
+  </div>
+  <div ng-show="todos.length" class="row">
+    <div class="col-sm-6">
+      <label class="i-checks i-checks-sm">
+        <input type="checkbox" ng-model="allChecked" ng-click="markAll(allChecked)"><i></i>
+        Marcar todas como finalizadas
+      </label>
+    </div>
+    <div class="col-sm-6 text-right">
+        <button class="btn btn-default btn-xs" ng-click="clearCompletedTodos()" ng-show="remainingTodoCount < todos.length">Limpar Finalizadas ({{todos.length - remainingTodoCount}})</button>
+      <strong>{{remainingTodoCount}}</strong>
+      <ng-pluralize count="remainingTodoCount" when="{ one: 'tarefa restante', other: 'tarefas restantes' }"></ng-pluralize>
+    </div>
+  </div>
+</div>

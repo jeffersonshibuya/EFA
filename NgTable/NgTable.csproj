@@ -1,0 +1,178 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{1CD4A026-DF0C-49CF-ADBC-374972E36B8F}</ProjectGuid>
+    <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>NgTable</RootNamespace>
+    <AssemblyName>NgTable</AssemblyName>
+    <TargetFrameworkVersion>v4.5.1</TargetFrameworkVersion>
+    <UseIISExpress>true</UseIISExpress>
+    <IISExpressSSLPort />
+    <IISExpressAnonymousAuthentication />
+    <IISExpressWindowsAuthentication />
+    <IISExpressUseClassicPipelineMode />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Web.DynamicData" />
+    <Reference Include="System.Web.Entity" />
+    <Reference Include="System.Web.ApplicationServices" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.EnterpriseServices" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="dist\ng-table.less" />
+    <Content Include="dist\ng-table.min.js.map" />
+    <Content Include="examples\fonts\glyphicons-halflings-regular.eot" />
+    <Content Include="examples\fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="examples\fonts\glyphicons-halflings-regular.ttf" />
+    <Content Include="examples\fonts\glyphicons-halflings-regular.woff" />
+    <Content Include="src\styles\ng-table.less" />
+    <Content Include="test\.jsbeautifyrc" />
+    <None Include="Web.Debug.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </None>
+    <None Include="Web.Release.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="dist\ng-table.css" />
+    <Content Include="dist\ng-table.js" />
+    <Content Include="dist\ng-table.min.css" />
+    <Content Include="dist\ng-table.min.js" />
+    <Content Include="examples\app\app.js" />
+    <Content Include="examples\app\main.js" />
+    <Content Include="examples\css\bootstrap-theme.min.css" />
+    <Content Include="examples\css\bootstrap.min.css" />
+    <Content Include="examples\demo1.html" />
+    <Content Include="examples\demo10.html" />
+    <Content Include="examples\demo11.html" />
+    <Content Include="examples\demo12.html" />
+    <Content Include="examples\demo13.html" />
+    <Content Include="examples\demo14.html" />
+    <Content Include="examples\demo15.html" />
+    <Content Include="examples\demo16.html" />
+    <Content Include="examples\demo17.html" />
+    <Content Include="examples\demo18.html" />
+    <Content Include="examples\demo19.html" />
+    <Content Include="examples\demo2.html" />
+    <Content Include="examples\demo20.html" />
+    <Content Include="examples\demo21.html" />
+    <Content Include="examples\demo22.html" />
+    <Content Include="examples\demo23.html" />
+    <Content Include="examples\demo24.html" />
+    <Content Include="examples\demo25.html" />
+    <Content Include="examples\demo26.html" />
+    <Content Include="examples\demo27.html" />
+    <Content Include="examples\demo28.html" />
+    <Content Include="examples\demo29.html" />
+    <Content Include="examples\demo3.html" />
+    <Content Include="examples\demo30.html" />
+    <Content Include="examples\demo31.html" />
+    <Content Include="examples\demo32.html" />
+    <Content Include="examples\demo33.html" />
+    <Content Include="examples\demo4.html" />
+    <Content Include="examples\demo5.html" />
+    <Content Include="examples\demo6.html" />
+    <Content Include="examples\demo7.html" />
+    <Content Include="examples\demo8.html" />
+    <Content Include="examples\demo9.html" />
+    <Content Include="examples\js\angular-mocks.js" />
+    <Content Include="examples\js\angular-resource.min.js" />
+    <Content Include="examples\js\angular.min.js" />
+    <Content Include="examples\js\jquery-1.9.1.min.js" />
+    <Content Include="examples\js\ng-table-export.src.js" />
+    <Content Include="examples\js\ng-table-resizable-columns.js" />
+    <Content Include="examples\js\require.js" />
+    <Content Include="examples\partials\editRow.html" />
+    <Content Include="src\ng-table\filters\select-multiple.html" />
+    <Content Include="src\ng-table\filters\select.html" />
+    <Content Include="src\ng-table\filters\text.html" />
+    <Content Include="src\ng-table\header.html" />
+    <Content Include="src\ng-table\pager.html" />
+    <Content Include="src\scripts\01-intro.js" />
+    <Content Include="src\scripts\02-app.js" />
+    <Content Include="src\scripts\03-params.js" />
+    <Content Include="src\scripts\04-controller.js" />
+    <Content Include="src\scripts\05-directive.js" />
+    <Content Include="src\scripts\06-pagination.js" />
+    <Content Include="src\scripts\07-outro.js" />
+    <Content Include="test\tableControllerSpec.js" />
+    <Content Include="test\tableDynamicSpec.js" />
+    <Content Include="test\tableParamsSpec.js" />
+    <Content Include="test\tableSpec.js" />
+    <Content Include="Web.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>True</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>1583</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>http://localhost:1583/</IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

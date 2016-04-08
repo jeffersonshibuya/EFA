@@ -1,0 +1,46 @@
+﻿<div class="wrapper-md">
+    <div>
+        <div class="row">
+            <div class="col-md-12">
+                <form name="frmAluno" class="form-validation" novalidate ng-submit="frmAluno.$valid && vm.save(usuario)">
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <span class="h4">{{vm.title}} - {{usuario.Name}} </span>
+                        </div>
+                        <br />
+                        <ul>
+                            <li ng-repeat="error in vm.errors" class="text-danger">{{error}}</li>
+                        </ul>
+                        <div class="panel-body">
+                            <div class="form-group pull-in clearfix">
+                                <div class="col-sm-6" ng-class="{true: 'has-error'}[submitted && frmUsuario.UserName.$invalid]">
+                                    <label>Nome de Usuário</label>
+                                    <input type="text" class="form-control" name="UserName" placeholder="UserName" data-ng-model="usuario.UserName" required>
+                                    <span class="text-danger" ng-show="submitted && frmUsuario.UserName.$invalid">
+                                        Informe o Nome de Usuário
+                                    </span>
+                                </div>
+                                <div class="col-sm-6">
+                                    <label>Nome</label>
+                                    <input type="text" class="form-control" placeholder="Nome" ng-model="usuario.FullName">
+                                    
+                                </div>
+                            </div>
+                            <div class="form-group pull-in clearfix">
+                                <div class="col-sm-12">
+                                    <label>E-mail</label>
+                                    <input type="email" class="form-control" placeholder="E-mail" ng-model="usuario.Email">
+                                </div>
+                            </div>
+                        </div>
+                        <footer class="panel-footer text-right bg-light lter">
+                            <button ui-sref="app.usuarios" class="btn btn-warning btn-addon" data-ng-click="vm.cancel()"><i class="fa fa-close"></i>Fechar</button>
+                            <button data-ng-click="submitted=true" class="btn btn-success btn-addon"><i class="fa fa-check"></i>Salvar</button>
+                        </footer>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+

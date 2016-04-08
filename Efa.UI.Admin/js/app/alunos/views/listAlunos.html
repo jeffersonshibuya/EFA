@@ -1,0 +1,62 @@
+﻿<div class="bg-light lter b-b wrapper-md">
+    <h1 class="m-n font-thin h3">Alunos</h1>
+</div>
+<div ng-show="loading"><cube-grid-spinner></cube-grid-spinner></div>
+<div ng-hide="loading">    
+    <h3 ng-show="vm.alunos == undefined">Nenhum Aluno cadastrado</h3>
+    <div class="wrapper-md">
+        <button type="button" ladda="loadingCreate" data-style="zoom-in" class="btn btn-info btn-addon" ng-click="vm.open('lg')"><i class="fa fa-plus"></i> Novo Aluno </button>
+        <br /><br />
+        <div class="panel panel-default" ng-hide="vm.alunos == undefined">
+            <div class="panel-heading">
+                {{vm.title}}
+            </div>
+            <div class="row wrapper">
+                <div class="col-md-4">
+                    <div class="input-group">
+                        <span class="input-group-addon"><i class="glyphicon glyphicon-search icon text-success-dk"></i></span>
+                        <input type="text" ng-model="search" class="input-sm form-control" placeholder="Pesquisar...">
+                    </div>
+                </div>
+            </div>
+            <div class="table-responsive">
+                <table ng-table="tableParams" class="table table-striped">
+                    <tr data-ng-repeat="aluno in $data">
+                        <td style="width:20px;">
+                            <label class="i-checks m-b-none">
+                                <input type="checkbox"
+                                       value="{{aluno}}"
+                                       ng-checked="selection.indexOf(aluno) > -1"
+                                       ng-click="toggleSelection(aluno)"
+                                       ng-disabled="aluno.NotasId == null"> <i></i>
+                            </label>
+
+                        </td>
+                        <td data-title="'Nome'" sortable="'Nome'" header-class="text-left">{{aluno.Nome}}</td>
+                        <td data-title="'Telefone'" sortable="'Telefone'">{{aluno.Telefone}} </td>
+                        <td data-title="'Celular'" sortable="'Celular'">{{aluno.Celular}}</td>
+                        <td data-title="'Turma'" sortable="'Turma.Livro'">
+                            <div ng-show="aluno.Turma != null">{{aluno.Turma.Livro}} ( {{aluno.Turma.Dias}} )</div>
+                            <div ng-show="aluno.Turma == null"> <span class="label bg-light" title="Disabled">Em Aberto</span> </div>
+                        </td>
+                        <td class="text-right">
+                            <button data-ng-click="vm.delete(aluno)" class="btn btn-rounded btn-sm btn-icon btn-danger" tooltip="Excluir">
+                                <i class="fa fa-trash"></i>
+                            </button>
+                            <button ng-click="vm.openEdit('lg', aluno)" class="btn btn-rounded btn-sm btn-icon btn-info" tooltip="Editar">
+                                <i class="fa fa-edit" ng-hide="editing"></i>
+                            </button>
+                            <button ng-click="vm.alunoNotas(aluno)" ng-class="{'btn-success': aluno.NotasId != null, 'btn-default': aluno.NotasId == null}" ng-disabled="aluno.TurmaId == null" class="btn btn-rounded btn-sm btn-icon" tooltip="Notas">
+                                <i class="fa fa-font"></i>
+                            </button>
+                            <button ng-click="vm.graficoAluno(aluno)" ng-class="{'btn-primary': aluno.NotasId != null}" ng-disabled="aluno.NotasId == null" class="btn btn-rounded btn-sm btn-icon" tooltip="Gráfico">
+                                <i class="fa fa-bar-chart"></i>
+                            </button>
+                        </td>
+                    </tr>
+                </table>
+                <button type="button" class="btn btn-success btn-addon" ng-click="vm.gerarBoletim()"><i class="fa fa-table"></i> Gerar Boletim </button>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,53 @@
+﻿<div class="wrapper-md">
+    <div>
+        <div class="row">
+            <div class="col-md-12">
+                <form name="frmUsuario" class="form-validation" novalidate ng-submit="frmUsuario.$valid && vm.cadastrar(usuario)">
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <span class="h4">Novo Usuário [{{usuario.Name}}] </span>
+                        </div>
+                        <br />
+                        <ul>
+                            <li ng-repeat="error in vm.errors" class="text-danger">{{error}}</li>
+                        </ul>
+                        <div class="panel-body">
+                            <div class="form-group pull-in clearfix">
+                                <div class="col-sm-6" ng-class="{true: 'has-error'}[submitted && frmUsuario.Name.$invalid]">
+                                    <label>Nome</label>
+                                    <input type="text" class="form-control" name="nome" placeholder="Name" data-ng-model="usuario.Name" required>
+                                    <span class="text-danger" ng-show="submitted && frmUsuario.Name.$invalid">
+                                        Informe o Nome
+                                    </span>
+                                </div>
+                                <div class="col-sm-6">
+                                    <label>E-mail</label>
+                                    <input type="email" class="form-control" placeholder="E-mail" ng-model="usuario.Email">
+                                </div>
+                            </div>
+                            <div class="form-group pull-in clearfix">
+                                <div class="col-sm-4">
+                                    <label>UserName</label>
+                                    <input type="text" class="form-control" placeholder="Senha" ng-model="usuario.UserName">
+                                </div>
+                                <div class="col-sm-4">
+                                    <label>Senha</label>
+                                    <input type="password" class="form-control" placeholder="Senha" ng-model="usuario.Password">
+                                </div>
+                                <div class="col-sm-4">
+                                    <label>Confirmar Senha</label>
+                                    <input type="password" class="form-control" placeholder="Confirma Senha" ng-model="usuario.ConfirmPassword">
+                                </div>
+                            </div>
+                        </div>
+                        <footer class="panel-footer text-right bg-light lter">                            
+                            <button ui-sref="app.usuarios" class="btn btn-warning btn-addon" data-ng-click="vm.cancel()"><i class="fa fa-close"></i>Fechar</button>                            
+                            <button data-ng-click="submitted=true" class="btn btn-success btn-addon"><i class="fa fa-check"></i>Cadastrar</button>
+                        </footer>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+

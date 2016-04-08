@@ -1,0 +1,49 @@
+﻿<div ng-show="loading"><cube-grid-spinner></cube-grid-spinner></div>
+<div ng-hide="loading">
+    <div class="bg-light lter b-b wrapper-md">
+        <h1 class="m-n font-thin h3">Turmas</h1>
+    </div>
+    <div class="wrapper-md">
+        <button type="button" class="btn btn-info btn-addon" ng-click="vm.open('lg')"><i class="fa fa-plus"></i> Nova Turma </button>
+        <br /><br />
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                Lista das Turmas
+            </div>
+            <div class="row wrapper">
+                <div class="col-md-4">
+                    <div class="input-group">
+                        <span class="input-group-addon"><i class="glyphicon glyphicon-search icon text-success-dk"></i></span>
+                        <input type="text" ng-model="search" class="input-sm form-control" placeholder="Pesquisar...">
+                    </div>
+                </div>
+            </div>
+            <div class="table-responsive">
+                <table ng-table="tableParams" class="table table-striped">
+                    <tr data-ng-repeat="turma in $data | orderBy:'Livro'">
+                        <td data-title="'Livro'" sortable="'Livro'" header-class="text-left">{{turma.Livro}}</td>
+                        <td data-title="'Horario'" sortable="'HorarioInicio'" header-class="text-left">{{turma.HorarioInicio}} - {{turma.HorarioFim}}</td>
+                        <td data-title="'Dias'" sortable="'Dias'" header-class="text-left">{{turma.Dias}} </td>
+                        <td data-title="'Professor'" sortable="'Professor.Nome'" header-class="text-left">
+                            <div ng-show="turma.ProfessorId != null">{{turma.Professor.Nome}}</div>
+                            <div ng-show="turma.ProfessorId == null"> <span class="label bg-light" title="Disabled">Em Aberto</span> </div>
+
+                        </td>
+                        <td>
+                            <button ng-click="vm.delete(turma)" class="btn btn-rounded btn-sm btn-icon btn-danger" tooltip="Excluir">
+                                <i class="fa fa-trash"></i>
+                            </button>
+                            <button ng-click="vm.openEdit('lg', turma)" class="btn btn-rounded btn-sm btn-icon btn-info" tooltip="Editar">
+                                <i class="fa fa-edit"></i>
+                            </button>
+                            <button ng-click="vm.openAlunos(turma.TurmaId)" class="btn btn-rounded btn-sm btn-icon btn-success" tooltip="Alunos">
+                                <i class="fa fa-users"></i>
+                            </button>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
